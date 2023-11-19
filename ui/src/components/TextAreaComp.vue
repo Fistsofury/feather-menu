@@ -5,7 +5,17 @@
         </div>
 
         <div class="selector-controls">
-            <textarea :tabindex="element.index" :rows="element.data.rows || '4'" :cols="element.data.cols || '33'"  :style="{'resize': element.data.resize ? '' : 'none'}" v-model="value" :placeholder="element.data.placeholder"> </textarea>
+           <textarea :tabindex="element.index"
+          :rows="element.data.rows || '4'"
+          :cols="element.data.cols || '33'"
+          :style="{
+              ...element.data.style,
+              'resize': element.data.resize ? 'both' : 'none',
+              'width': '100%'  // Ensure this width is not being overwritten by element.data.style
+          }"
+          v-model="value"
+          :placeholder="element.data.placeholder">
+</textarea>
         </div>
     </div>
 </template>
